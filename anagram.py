@@ -8,16 +8,13 @@
 def anagram(string1 , string2):
 	if len(string1) !=len(string2):
 		return False
-	frequency_check = {}
-	for char in string1:
-		#print(char,"current char in string1")
-		frequency_check[char] = frequency_check.get(char , 0)+1
-	print(frequency_check)
+	
+	frequncy_dict =count_frequency(string1)
 	
 	for char in string2:
-		if frequency_check.get(char , 0) > 0:
-			#frequency_check[char] =frequency_check.get(char)-  1
-			frequency_check[char] -=1
+		if frequncy_dict.get(char , 0) > 0:
+			#frequncy_dict[char] =frequncy_dict.get(char)-  1
+			frequncy_dict[char] -=1
 		else:
 			False
 	return True 
@@ -25,7 +22,19 @@ def anagram(string1 , string2):
 	
 	
 		
-	
+#• Count frequency of each element in an array.
+
+def count_frequency(string):
+	frequency_count = {}
+	for char in string:
+		char = char.lower()
+		if char is " " or char == " ":
+			continue
+		frequency_count[char] = frequency_count.get(char , 0) +1
+	print(frequency_count)
+	return frequency_count
+		
+		
 	
 
 if __name__ == "__main__":
@@ -36,4 +45,7 @@ if __name__ == "__main__":
 		print("Given two string are Anagram :")
 	else:
 		print("Given two string are not Anagram :")
+		
+	frequency_count_dict = count_frequency(string1)
+	print(frequency_count_dict)
 	
